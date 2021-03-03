@@ -9,7 +9,6 @@ struct Node
 
 void printDataAfterNode(Node *node)
 {
-   std::cout << "check "<< (NULL == 0) << std::endl;
     while (node->link != NULL)
     {
         std::cout << node->data << std::endl;
@@ -35,7 +34,6 @@ int main()
     Node *third = new Node;
     third->link = 0;
     third->data = 30;
-    std::cout << (third -> link != NULL) << std::endl;
 
     Node *second = new Node;
     second->link = third;
@@ -44,9 +42,17 @@ int main()
     Node *first = new Node; //實體化首節點
     first->link = second;   //指向null
     first->data = 10;
+    // Node *temp = new Node;
+    // std::cout<<"check f " << first->data << std::endl;
+    //  temp =  first -> link;
+    //  std::cout << "check s "<< first->data << std::endl;
+    // std::cout << first->data << std::endl;
+    // first = first->link;
+    // std::cout << first->data << std::endl;
+    // first = first->link;
+    // std::cout << first->data << std::endl;
 
-    printDataAfterNode(first);
-   
+    // printDataAfterNode(first);
 
     return 0;
 }

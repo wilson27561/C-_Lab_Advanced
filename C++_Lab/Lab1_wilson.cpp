@@ -1,11 +1,9 @@
 #include <iostream>
+#include <string>
 #include <fstream>
 #include <vector>
-#include <fstream>
-#include <iomanip>
-#include <string>
 #include <cstdlib>
-#include <set>
+#include <sstream>
 
 using namespace std;
 
@@ -61,7 +59,6 @@ int main()
 
 void insertLinkedList(Node **node, vector<int> fileNumber)
 {
-    // 取值
     // std::cout << "insert" << (*node) -> data << std::endl;
     //  std::cout << "bool" << (*node) -> link << std::endl;
     //    std::cout << "bool" << (*node) -> data << std::endl;

@@ -2,10 +2,9 @@
 #include <fstream>
 #include <vector>
 #include <fstream>
-#include <iomanip>
 #include <string>
 #include <cstdlib>
-#include <set>
+#include <sstream>
 
 using namespace std;
 
@@ -14,30 +13,24 @@ struct Node
     int data;
     Node *link;
 };
+vector<int> fileNumber;
 
 void createList(ifstream &, Node **);
 void deleteElements(ifstream &, Node **);
 bool searchLinkedList(Node *, int, Node **, Node **);
-void insertLinkedList(Node **, vector<int>);
-//readfile to vector
-vector<int> readfile(string);
+void insertLinkedList(Node **, int);
 //split by space return vector
 vector<int> splitSpace(string, vector<int>);
+void reverseNode(Node *node);
 
 void printDataAfterNode(Node *node)
 {
-    int k = 0;
     while (node->link != NULL)
     {
-        std::cout << node->data << std::endl;
+        std::cout << node->data << " ";
         node = node->link;
-        k++;
-        if (k > 20)
-        {
-            break;
-        }
     }
-    std::cout << node->data << std::endl;
+    std::cout << node->data << endl;
 }
 
 int main()
@@ -47,9 +40,20 @@ int main()
     // no duplicate numbers in the linked-list
     // are sorted in the descending order in the linked-list.
     // get unsorted originally in a file, file name from keyboard
-
-    vector<int> fileNumber = readfile("Lab1rawData.txt");
+    ifstream fstream("Lab1rawData.txt");
     Node *node = new Node;
+    createList(fstream, &node);
+    //記錄第一個node的位置
+    //=========== 這段之後改掉 ===========
+    Node *first = new Node;
+    first->link = node;
+    //=========== 這段之後改掉 ===========
+    for (int i = 1; i < (fileNumber.size()); i++)
+    {
+        insertLinkedList(&node, fileNumber[i]);
+    }
+
+    printDataAfterNode(first->link);
 
     //second part
     //delete some elements from the linked-list
@@ -59,44 +63,50 @@ int main()
     return 0;
 }
 
-void insertLinkedList(Node **node, vector<int> fileNumber)
+void createList(ifstream &ftr, Node **node)
 {
-    // 取值
-    // std::cout << "insert" << (*node) -> data << std::endl;
-    //  std::cout << "bool" << (*node) -> link << std::endl;
-    //    std::cout << "bool" << (*node) -> data << std::endl;
-    for (int i = 0; i < fileNumber.size(); i++)
-    {
-        if (i == 0)
-        { 
-            (*node) -> data  = fileNumber[i];
-            *node = NULL;
-        }
-        else
-        {
-           while ((*node) -> link  != NULL)
-           {
-            
-           }
-        }
-    }
-}
 
-vector<int> readfile(string name)
-{
-    vector<int> fileNumber;
-    ifstream ftr(name);
     string fileContent;
     while (getline(ftr, fileContent))
     {
         fileNumber = splitSpace(fileContent, fileNumber);
     }
+    (*node)->data = fileNumber[0];
+    (*node)->link = NULL;
+}
 
-    return fileNumber;
+void insertLinkedList(Node **node, int number)
+{
+    Node *tempNode = new Node;
+    tempNode->link = (*node);
+    while (tempNode->link != NULL)
+    {
+        tempNode = tempNode->link;
+        if(tempNode->data > number){
+
+        }else if (tempNode->data < number)
+        {
+            
+        }
+
+
+    }
+    Node *insertNode = new Node;
+    insertNode->data = number;
+    insertNode->link = NULL;
+    tempNode->link = insertNode;
+
+    // while ((*node)->link != NULL)
+    // {
+    //     (*node) = (*node)->link;
+    // }
+    // Node *insertNode = new Node;
+    // insertNode->data = number;
+    // insertNode->link = NULL;
+    // (*node)->link = insertNode;
 }
 
 //split by space return vector
-
 vector<int> splitSpace(string fileContent, vector<int> fileNumber)
 {
     stringstream contentArray(fileContent);
