@@ -79,22 +79,42 @@ void insertLinkedList(Node **node, int number)
 {
     Node *tempNode = new Node;
     tempNode->link = (*node);
-    while (tempNode->link != NULL)
+
+    //第一次進來
+    if ((*node)->link == NULL)
     {
-        tempNode = tempNode->link;
-        if(tempNode->data > number){
-
-        }else if (tempNode->data < number)
+        Node *insertNode = new Node;
+        insertNode->data = number;
+        insertNode->link = NULL;
+        (*node)->link = insertNode;
+        (*node) = (*node)->link;
+        if (tempNode->data > number)
         {
-            
         }
-
-
+        else if (tempNode->data < number)
+        {
+        }
     }
-    Node *insertNode = new Node;
-    insertNode->data = number;
-    insertNode->link = NULL;
-    tempNode->link = insertNode;
+    else
+    {
+
+        //第二次進來
+        // while (tempNode->link != NULL)
+        // {
+        //     tempNode = tempNode->link;
+        //     if(tempNode->data > number){
+
+        //     }else if (tempNode->data < number)
+        //     {
+
+        //     }
+    }
+
+    // }
+    // Node *insertNode = new Node;
+    // insertNode->data = number;
+    // insertNode->link = NULL;
+    // tempNode->link = insertNode;
 
     // while ((*node)->link != NULL)
     // {
