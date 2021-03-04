@@ -77,38 +77,46 @@ void createList(ifstream &ftr, Node **node)
 
 void insertLinkedList(Node **node, int number)
 {
-    Node *tempNode = new Node;
-    tempNode->link = (*node);
+    // Node *tempNode = new Node;
+    // tempNode->link = (*node);
 
-    //第一次進來
-    if ((*node)->link == NULL)
-    {
-        Node *insertNode = new Node;
+
+      Node *insertNode = new Node;
         insertNode->data = number;
         insertNode->link = NULL;
         (*node)->link = insertNode;
         (*node) = (*node)->link;
-        if (tempNode->data > number)
-        {
-        }
-        else if (tempNode->data < number)
-        {
-        }
-    }
-    else
-    {
 
-        //第二次進來
-        // while (tempNode->link != NULL)
-        // {
-        //     tempNode = tempNode->link;
-        //     if(tempNode->data > number){
 
-        //     }else if (tempNode->data < number)
-        //     {
+    // //第一次進來
+    // if ((*node)->link == NULL)
+    // {
+    //     Node *insertNode = new Node;
+    //     insertNode->data = number;
+    //     insertNode->link = NULL;
+    //     (*node)->link = insertNode;
+    //     (*node) = (*node)->link;
+    //     if (tempNode->data > number)
+    //     {
+    //     }
+    //     else if (tempNode->data < number)
+    //     {
+    //     }
+    // }
+    // else
+    // {
 
-        //     }
-    }
+    //     //第二次進來
+    //     // while (tempNode->link != NULL)
+    //     // {
+    //     //     tempNode = tempNode->link;
+    //     //     if(tempNode->data > number){
+
+    //     //     }else if (tempNode->data < number)
+    //     //     {
+
+    //     //     }
+    // }
 
     // }
     // Node *insertNode = new Node;

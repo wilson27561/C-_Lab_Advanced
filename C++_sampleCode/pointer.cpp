@@ -43,16 +43,16 @@ void changePointerValue(int **ptr_ptr)
 int main()
 {
 
-  //*pointer
-  //&reference
-  // int n = 10;
-  // // 宣告指標時最好要給予初始值
-  // int *p = &n;
+  // *pointer
+  // &reference
+  int n = 10;
+  // 宣告指標時最好要給予初始值
+  int *p = &n;
 
-  // cout << "n 的值：" << n << endl
-  //      << "n 位址：" << &n << endl;
-  // cout << "p 儲存的位址：" << p << endl;
-  // cout << "提取 p 儲存位址處的物件：" << *p << endl;
+  cout << "n 的值：" << n << endl
+       << "n 位址：" << &n << endl;
+  cout << "p 儲存的位址：" << p << endl;
+  cout << "提取 p 儲存位址處的物件：" << *p << endl;
 
   // *p = 20;
   // cout << "n = " << n << endl
